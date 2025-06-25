@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIC BOX</title>
+      <link rel="icon" type="image/png" href="IMAGES/logo.jpg">
+    <link rel="stylesheet" href="implement.css">
+</head>
+<body>
+    <h1>1.Celsius to Fahrenheit Conversion</h1>
+    <div class="box">
+        <label for="celcius">Celsius Value</label>
+        <input type="number" id="celcius" placeholder="Enter Celsius">
+        <label for="fahrenheit">Fahrenheit Value</label>
+        <input type="number" id="fahrenheit" placeholder="Fahrenheit" readonly>
+        <button onclick="convertTemp()">Check Result</button>
+        <button onclick="clearCelcius()">Clear</button>
+      
+    </div>
+    <script>
+        function convertTemp() {
+            const c=parseFloat(document.getElementById("celcius").value);
+            const f=(c*9/5)+32;
+            document.getElementById("fahrenheit").value=isNaN(f)?"":f.toFixed(2);
+        }
+        function clearCelcius(){
+            document.getElementById("celcius").value='';
+            document.getElementById("fahrenheit").value='';
+        }
+    </script>
+
+    <div id="palindrome" class="section">
+    <h1>2.Palindrome Checker</h1>
+    <div class="box">
+        <label for="text">Enter Text</label>
+        <input type="text" id="text" placeholder="Type Something.." >
+        <label for="result">Result</label>
+        <input type="text" id="result"  readonly>
+        <button onclick="checkPalindrome()">Check Result</button>
+        <button onclick="clearPalindrome()">Clear</button>
+
+      
+    </div>
+    </div>
+    <script>
+        function checkPalindrome() {
+            const str=document.getElementById("text").value.toLowerCase().replace(/[^a-z0-9]/g,'');
+            const reversed=str.split('').reverse().join('');
+            const isPalindrome=str && str===reversed;
+            document.getElementById("result").value=isPalindrome?"Palindrome":"Not A Palindrome";
+        }
+        
+        function clearPalindrome(){
+            document.getElementById("text").value='';
+            document.getElementById("result").value='';
+        }
+    </script>
+
+
+
+    <div id="factorial" class="section">
+    <h1>3.Factorial Finder</h1>
+    <div class="box">
+        <label for="number">Enter Number</label>
+        <input type="number" id="number" placeholder="Enter a Positive Number" >
+        <label for="factorialResult">Result</label>
+        <input type="text" id="factorialResult"  readonly>
+        <button onclick="findFactorial()">Check Result</button>
+        <button onclick="clearFactorial()">Clear</button>
+
+      
+    </div>
+    </div>
+    <script>
+        function findFactorial() {
+          const num=parseInt(document.getElementById("number").value);
+          if(isNaN(num)||num<0)
+          {
+            document.getElementById("factorialResult").value="Invalid Input";
+            return;
+          }
+          let result=1;
+          for(let i=2;i<=num;i++)
+          {
+            result*=i;
+          }
+          document.getElementById("factorialResult").value=result;
+        }
+        function clearFactorial(){
+             document.getElementById("number").value='';
+            document.getElementById("factorialResult").value='';
+
+        }
+    </script>
+
+    
+    <div id="si" class="section">
+    <h1>4.Simple Interest Calculator</h1>
+    <div class="box">
+        <label for="principal">Principal Amount(p)</label>
+        <input type="number" id="principal" placeholder="Enter Principal" >
+         <label for="rate">Rate of Interest(r)</label>
+        <input type="number" id="rate" placeholder="Enter Rate" >
+         <label for="time">Time(y)</label>
+        <input type="number" id="time" placeholder="Enter Time" >
+        <label for="siResult">Result</label>
+        <input type="text" id="siResult"  readonly>
+        <button onclick="findSI()">Check Result</button>
+        <button onclick="clearSI()">Clear</button>
+
+      
+    </div>
+    </div>
+    <script>
+        function findSI() {
+         const p=parseFloat(document.getElementById("principal").value);
+         const r=parseFloat(document.getElementById("rate").value);
+         const t=parseFloat(document.getElementById("time").value);
+         if(isNaN(p) || isNaN(r)|| isNaN(t)|| p<=0 || r<=0|| t<=0)
+         {
+            document.getElementById("siResult").value="Invalid Input";
+            return;
+         }
+         const si=(p*r*t)/100;
+         document.getElementById("siResult").value=si.toFixed(2);
+        }
+        function clearSI(){
+            document.getElementById("principal").value='';
+            document.getElementById("rate").value='';
+            document.getElementById("time").value='';
+            document.getElementById("siResult").value='';
+
+
+        }
+
+    </script>
+
+    
+    <div id="prime" class="section">
+    <h1>5.Prime Number Checker</h1>
+    <div class="box">
+        <label for="primeInput">Enter a Number</label>
+        <input type="number" id="primeInput" placeholder="Enter a Number" >
+        <label for="primeResult">Result</label>
+        <input type="text" id="primeResult"  readonly>
+        <button onclick="findPRIME()">Check Result</button>
+        <button onclick="clearPRIME()">Clear</button>
+
+      
+    </div>
+    </div>
+    <script>
+        function findPRIME() {
+         const num=parseInt(document.getElementById("primeInput").value);
+         let result="";
+        if(isNaN(num) || num<=1){
+        result="Invalid Input";
+        }else{
+            let isPrime=true;
+            for(let i=2;i<=Math.sqrt(num);i++)
+        {
+            if(num%i===0)
+        {
+            isPrime=false;
+            break;
+        }
+        }
+        result=isPrime?"prime Number":"Not a Prime Number";
+        } 
+        document.getElementById("primeResult").value=result;
+        }
+        function clearPRIME(){
+            document.getElementById("primeInput").value='';
+            document.getElementById("primeResult").value='';
+        }
+
+    </script>
+
+
+    <div id="fibonacci" class="section">
+    <h1>6.Fibonacci Series Generator</h1>
+    <div class="box">
+        <label for="fiboInput">Enter a Number</label>
+        <input type="number" id="fiboInput" placeholder="Enter a Number" >
+        <label for="fiboResult">Result</label>
+        <input type="text" id="fiboResult"  readonly>
+        <button onclick="findFIBO()">Check Result</button>
+        <button onclick="clearFIBO()">Clear</button>
+
+      
+    </div>
+    </div>
+    <script>
+        function findFIBO() {
+         const count=parseInt(document.getElementById("fiboInput").value);
+         let result="";
+         if(isNaN(count) || count<=0){
+            result="Invalid Input";
+         }else{
+            let a=0,b=1;
+            let series=[];
+
+            for(let i=0;i<count;i++){
+                series.push(a);
+                const next=a+b;
+                a=b;
+                b=next;
+            }
+            result=series.join(",");
+         }
+         document.getElementById("fiboResult").value=result;
+        
+        }
+        function clearFIBO(){
+            document.getElementById("fiboInput").value='';
+            document.getElementById("fiboResult").value='';
+        }
+    </script>
+
+     <div id="powerof2" class="section">
+    <h1>7.Power Of 2 Counter</h1>
+    <div class="box">
+        <label for="Input">Enter a Number</label>
+        <input type="number" id="Input" placeholder="Enter a Number" >
+        <label for="Result">Result</label>
+        <input type="text" id="Result"  readonly>
+        <button onclick="findPOW()">Check Result</button>
+        <button onclick="clearPOW()">Clear</button>
+
+      
+    </div>
+    </div>
+    <script>                
+        function findPOW() {
+         const num=parseInt(document.getElementById("Input").value);
+         let result="";
+         if(isNaN(num) || num<=0){
+            result="Invalid Input";
+         }else{
+           result=(num &(num-1))===0?"Power of 2":"Not a Power of 2";
+         }
+         document.getElementById("Result").value=result;
+        
+        }
+        function clearPOW(){
+            document.getElementById("Input").value='';
+            document.getElementById("Result").value='';
+        }
+    </script>
+
+     <div id="evenodd" class="section">
+    <h1>8.Even/Odd Number Checker</h1>
+    <div class="box">
+        <label for="eveInput">Enter a Number</label>
+        <input type="number" id="eveInput" placeholder="Enter a Number" >
+        <label for="eveResult">Result</label>
+        <input type="text" id="eveResult"  readonly>
+        <button onclick="findEVE()">Check Result</button>
+        <button onclick="clearEVE()">Clear</button>
+
+      
+    </div>
+    </div>
+    <script>                
+        function findEVE() {
+         const num=parseInt(document.getElementById("eveInput").value);
+         let result="";
+         if(isNaN(num)){
+            result="Invalid Input";
+         }else{
+           result=(num%2===0)?"Even Input":"Odd Input";
+         }
+         document.getElementById("eveResult").value=result;
+        
+        }
+        function clearEVE(){
+            document.getElementById("eveInput").value='';
+            document.getElementById("eveResult").value='';
+        }
+    </script>
+
+    
+     <div id="BMI" class="section">
+    <h1>9.BMI Calculator</h1>
+    <div class="box">
+        <label for="heightInput">Enter Height</label>
+        <input type="number" id="heightInput" placeholder="Enter Height" >
+         <label for="weightInput">Enter Weight</label>
+        <input type="number" id="weightInput" placeholder="Enter Weight" >
+        <label for="BMIResult">Result</label>
+        <input type="text" id="BMIResult"  readonly>
+        <button onclick="findBMI()">Check Result</button>
+        <button onclick="clearBMI()">Clear</button>
+
+      
+    </div>
+    </div>
+    <script>                
+        function findBMI() {
+         const height=parseFloat(document.getElementById("heightInput").value);
+         const weight=parseFloat(document.getElementById("weightInput").value);
+       
+         if(isNaN(height)|| isNaN(weight)|| height<=0 || weight<=0){
+            result="Invalid Input";
+            return;
+         }
+         const BMI=weight/(height*height);
+         let category="";
+
+         if(BMI<18.5) category="Under Weight";
+         else if(BMI<25) category="Normal";
+         else if(BMI<30) category="Over Weight";
+         else category="Obese";
+         document.getElementById("BMIResult").value=category;
+        
+        }
+        function clearBMI(){
+            document.getElementById("heightInput").value='';
+            document.getElementById("weightInput").value='';
+            document.getElementById("BMIResult").value='';
+        }
+    </script>
+
+    <div id="leap" class="section">
+        <h1>10.Leap Year Checker</h1>
+        <div class="box">
+            <label for="yearInput">Enter Year</label>
+            <input type="number" id="yearInput" placeholder="eg:.,2024">
+            <label for="leapResult">Result</label>
+            <input type="text" id="leapResult" readonly>
+            <button onclick="checkLeapYear()">Check Result</button>
+            <button onclick="clearLeap()">Clear</button>
+        </div>
+    </div>
+    <script>
+        function checkLeapYear(){
+            const year=parseInt(document.getElementById("yearInput").value);
+            let result="";
+            if(isNaN(year)|| year<=0)
+        {
+            result="Invalid Input";
+
+        }
+        else{
+            if((year%4===0 && year%100!==0) || (year%400===0))
+        {
+            result="Leap Year";
+        }
+        else{
+            result="Not a Leap Year";
+        }
+        }
+        document.getElementById("leapResult").value=result;
+        }
+        function clearLeap(){
+            document.getElementById("yearInput").value='';
+            document.getElementById("leapResult").value='';
+        }
+    </script>
+
+
+    
+</body>
+</html>
